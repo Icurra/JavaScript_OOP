@@ -9,25 +9,109 @@ class Person {
     this.residence = residence;
     this.hobbies = hobbies;
   }
-  info() {
-    console.log(
-      `${this.name}\n${this.pets}\n${this.residence}\n${this.hobbies}`
-    );
+
+  addHobby(hobby) {
+    this.hobbies.push(hobby);
   }
+
+  removeHobby(rmHobby) {
+    this.hobbies = this.hobbies.filter((hobby) => hobby != rmHobby);
+  }
+
   greeting() {
-    console.log("Hi!");
+    console.log("Hello fellow person!");
+  }
+
+  toString() {
+    return Object.entries(this).toString();
   }
 }
+// Exercise 2 Section
+console.log("EXERCISE 2:\n==========\n");
+
 class Coder extends Person {
-  constructor(name, pets, residence, hobbies) {
+  constructor(name, pets, residence, hobbies, occupation) {
     super(name, pets, residence, hobbies);
-    this.occupation = "Full Stack Web Developer";
+
+    this.occupation = occupation;
   }
   greeting() {
-    console.log("Hi TrueCoder!");
+    console.log("Howdy, I'm a programmer.");
   }
 }
-const Landin = new Person ("Landin", 0, "California", ["Gunpla Models", " Video Games", " Reading"]);
-const Alex = new Coder ("Alex", 0, "Tennessee", ["SWTOR", " Video Editing", " Smushing"]);
-console.log(Landin.info());
-console.log(Alex.info());
+// Exercise 3 Section
+console.log("EXERCISE 3:\n==========\n");
+let coder = new Coder(
+  "Landin",
+  0,
+  "Apple Valley",
+  ["Video Games", "Reading", "Sleeping"],
+  "Web Developer"
+);
+console.log(coder);
+
+coder.removeHobby("Reading");
+coder.addHobby("Tinkering");
+coder.greeting();
+console.log(coder.toString());
+// Exercise 4 Section
+console.log("EXERCISE 4:\n==========\n");
+
+class Calculator {
+  result = 0;
+
+  add(a, b) {
+    let res;
+    if (b == undefined) {
+      res = this.result + a;
+    } else {
+      res = a + b;
+    }
+    this.result =  res;
+    return this.result;
+  }
+
+  subtract(a, b) {
+    let res;
+    if (b == undefined) {
+      res = this.result - a;
+    } else {
+      res = a - b;
+    }
+    this.result =  res;
+    return this.result;
+    
+  }
+
+  multiply(a, b) {
+    let res;
+    if (b == undefined) {
+      res = this.result * a;
+    } else {
+      res = a * b;
+    }
+    this.result =  res;
+    return this.result;
+  }
+
+  divide(a, b) {
+    let res;
+    if (b == undefined) {
+      res = this.result / a;
+    } else {
+      res = a / b;
+    }
+    this.result =  res;
+    return this.result;
+  }
+
+  display() {
+    console.log(this.result);
+  }
+}
+let calc = new Calculator();
+calc.add(5);
+calc.subtract(2)
+calc.multiply(8);
+calc.divide(6);
+calc.display();
